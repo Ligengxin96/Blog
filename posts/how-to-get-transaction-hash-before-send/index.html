@@ -52,7 +52,7 @@
 26
 </pre><td class="rouge-code"><pre><span class="c1">// web3.js 实现方式</span>
 <span class="k">import</span> <span class="nx">Web3</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">web3</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="nx">binanceRpcUrl</span><span class="p">);</span> <span class="c1">// binanceRpcUrl 是链的 rpc 地址</span>
+<span class="kd">const</span> <span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="nx">blockchainNetRpcUrl</span><span class="p">);</span> <span class="c1">// blockchainNetRpcUrl 是链的 rpc 地址</span>
 <span class="kd">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">accounts</span><span class="p">.</span><span class="nx">privateKeyToAccount</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">);</span> <span class="c1">// privateKey 是账户私钥</span>
 <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">accounts</span><span class="p">.</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">account</span><span class="p">);</span>
 
@@ -124,7 +124,7 @@
   <span class="k">return</span> <span class="p">{</span> <span class="nx">rawTransaction</span><span class="p">,</span> <span class="nx">transactionHash</span> <span class="p">};</span>
 <span class="p">};</span>
 
-<span class="kd">const</span> <span class="nx">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">binanceRpcUrl</span><span class="p">);</span> <span class="c1">// binanceRpcUrl 是链的 rpc 地址</span>
+<span class="kd">const</span> <span class="nx">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">blockchainNetRpcUrl</span><span class="p">);</span> <span class="c1">// blockchainNetRpcUrl 是链的 rpc 地址</span>
 <span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">provider</span><span class="p">);</span> <span class="c1">// privateKey 是账户私钥</span>
 <span class="kd">const</span> <span class="nx">contract</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">Contract</span><span class="p">(</span><span class="nx">contractAddress</span><span class="p">,</span> <span class="nx">contractAbi</span><span class="p">,</span> <span class="nx">wallet</span><span class="p">);</span> <span class="c1">// contractAbi 是合约的 abi</span>
 
@@ -163,7 +163,7 @@
   <span class="p">}</span>
 <span class="p">};</span>
 
-<span class="kd">const</span> <span class="nx">ethersProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">binanceRpcUrl</span><span class="p">);</span> <span class="c1">// binanceRpcUrl 是链的 rpc 地址</span>
+<span class="kd">const</span> <span class="nx">ethersProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">blockchainNetRpcUrl</span><span class="p">);</span> <span class="c1">// blockchainNetRpcUrl 是链的 rpc 地址</span>
 <span class="kd">const</span> <span class="nx">isConfirmed</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">isTransactionConfirmed</span><span class="p">(</span><span class="nx">transactionHash</span><span class="p">,</span> <span class="nx">ethersProvider</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isConfirmed</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">交易未上链</span><span class="dl">'</span><span class="p">);</span>
